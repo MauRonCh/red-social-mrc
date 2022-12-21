@@ -3,11 +3,12 @@ const express = require('express')
 const cors = require('cors')
 
 //? Files
-const config = require('../config')
-const db = require('./utils/database')
-const initModels = require('./models/initModels')
-const userRouter = require('./users/users.router')
-const authRouter = require('./auth/auth.router')
+const config = require('../config');
+const db = require('./utils/database');
+const initModels = require('./models/initModels');
+const userRouter = require('./users/users.router');
+const authRouter = require('./auth/auth.router');
+const postRouter = require('./posts/posts.router');
 
 //? Initial Configs
 
@@ -42,7 +43,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/users', userRouter)
 app.use('/api/v1/auth', authRouter)
-
+app.use('/api/v1/posts', postRouter)
 
 app.listen(config.api.port, () => {
     console.log(`Server started on ${config.api.host}`)
